@@ -1,0 +1,56 @@
+import webview, os, sys
+from pynput import keyboard
+
+def on_closed():
+  pass
+
+def on_closing():
+  pass
+
+def on_shown():
+  pass
+
+def on_loaded():
+  pass
+
+class Api:
+  def __init__(self):
+    self.keyboard = keyboard.Controller()
+
+  def openChild(self, url):
+    window.hide()
+    child = webview.create_window(url, url)
+
+  def minimize(self):
+    window.minimize()
+
+  def fullscreen(self):
+    window.toggle_fullscreen()
+
+  def close(self):
+    window.destroy()
+    os._exit(0)
+
+  def reload(self):
+    os.startfile(sys.argv[0])
+    self.close()
+
+  def media_previous(self):
+    self.keyboard.press(keyboard.Key.media_previous)
+
+  def media_next(self):
+    self.keyboard.press(keyboard.Key.media_next)
+
+  def media_play_pause(self):
+    self.keyboard.press(keyboard.Key.media_play_pause)
+
+#!FLAG-HTML
+
+if __name__ == '__main__':
+  api = Api()
+  window = webview.create_window("{settings.app_name}", html=html, js_api=api, width={settings.app_proportions[0]}, height={settings.app_proportions[1]}, confirm_close={settings.app_confirm_close}, frameless={settings.app_frameless}, fullscreen={settings.app_fullscreen}, resizable={settings.app_resizable}, on_top={settings.app_on_top})
+  window.events.closed += on_closed
+  window.events.closing += on_closing
+  window.events.shown += on_shown
+  window.events.loaded += on_loaded
+  webview.start(gui="{settings.app_web_engine}", debug={settings.app_allow_inspect})
