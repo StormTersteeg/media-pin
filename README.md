@@ -1,5 +1,5 @@
 # media-pin
-Your Always-On Media Control Companion
+Your Always-On-Top Media Control Companion
 
 ![media-pin](https://github.com/user-attachments/assets/19f920b7-c696-4109-afe6-0d1fef79cd77)
 
